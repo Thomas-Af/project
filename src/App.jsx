@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import fetchData from '../src/utils/fetchData';
+import fetchData from './utils/fetchData';
 
 export default function App() {
  const [data, setData] = useState(null);
@@ -14,5 +14,5 @@ export default function App() {
 
  
 
- return <div className="App">App</div>;
+ return <div className="App">AppPLAPLA</div>;
 }
