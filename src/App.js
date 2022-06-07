@@ -8,11 +8,13 @@ export default function App() {
  const [error, setError] = useState(null);
 
  useEffect(() => {
-    fetchData();
+    fetchData('games'); 
+    fetchData('genres'); 
   }, []);
 
 
  
-
- return <div className="App">AppPLAPLA</div>;
+ return (
+   <div className="App">--</div>
+   )
 }
