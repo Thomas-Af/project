@@ -149,6 +149,12 @@ code {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  line-height: 16px;
+}
+
+.popUpGame .block .content p{
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .popUpGame .block .content .genre {

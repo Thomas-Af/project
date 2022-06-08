@@ -6,9 +6,8 @@ export default function menu() {
   <div className='menu'>
    <nav>
     <Link to="/">HomePage</Link>
-    <Link to="Gender">GenderPage</Link>
-    <Link to="Random">RandomPage</Link>
     <Link to="Favorite">Favorite</Link>
+    <Link to="Random">RandomGame</Link>
    </nav>
   </div>
  )

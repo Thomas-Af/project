@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import GameList from './GameList';
+import Filters from './Filters';
 import popUpGame from './PopUpGame';
 
 import fetchData from '../utils/fetchData';
@@ -7,6 +8,8 @@ import fetchData from '../utils/fetchData';
 export function Homepage() {
  const [data, setData] = useState([]);
  const [favorite, setFavorite] = useState([]);
+ const [genre, setGenre] = useState();
+
 
 
  useEffect(() => {
@@ -54,11 +57,20 @@ export function Homepage() {
    
    console.log('favorite', favorite)
 
+   const filteredGames = genre ? data.filter(games => games.genres.find(t => t.name === genre))
+   : data;
+
+   function filter(name) {
+      console.log(name)
+      setGenre(prevGenre => (prevGenre === name ? null : name))
+    }
+
 
  
  return (
   <>
-   <GameList data={data} like={AddRemoveFavorite}/>
+   <Filters data={data} filter={filter}/>
+   <GameList data={filteredGames} like={AddRemoveFavorite}/>
   </>
    )
 }

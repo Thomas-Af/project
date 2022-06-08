@@ -45,7 +45,7 @@ export function RandomPage() {
  return  (
   <>
   {/* <button onClick={randomGame}>Trouver un nouveau jeu ! </button> */}
-   <PopUpGame data={game}/>
+   <PopUpGame data={game} link="/"/>
   </>
  )
 }

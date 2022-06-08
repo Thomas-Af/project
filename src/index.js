@@ -5,7 +5,6 @@ import App from './App';
 import Menu from './components/Menu';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {Genderpage} from './components/Genderpage';
 import {Homepage} from './components/Homepage';
 import {FavoritePage} from './components/FavoritePage';
 import {RandomPage} from './components/RandomPage';
@@ -18,7 +17,6 @@ root.render(
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="Random" element={<RandomPage />} />
-        <Route path="Gender" element={<Genderpage />} />
         <Route path="favorite" element={<FavoritePage />} />
       </Routes> 
       {/* <App /> */}

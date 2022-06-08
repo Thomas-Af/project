@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
+
 export default function PopUpGame(props) {
- const { data } = props
+ const { data, link } = props
 
  console.log('trucbidulechouette');
 
@@ -29,12 +32,24 @@ export default function PopUpGame(props) {
    return <li key={item.id}><img src={item.image} alt={item.name}/></li>
   })
 
+  const stores = data.stores.map(item => {
+   return (
+   <li key={item.id}>
+    <a target='_blank' href={'https://' + item.store.domain}>
+     {item.store.name}
+     </a>
+   </li>
+   )
+  })
+
   const avis = data.ratings_count
 
   return (
    <div className='popUpGame' id="popUpGame">
     <div className='block'>
-     <div className='close' onClick={closePopUp}>X</div>
+     <div className='close' onClick={closePopUp}>
+     <Link to={link}>X</Link>
+      </div>
      <img src={data.background_image} alt={data.name} className='img'/>
      <div className='content'>
       { data.name }
@@ -52,6 +67,11 @@ export default function PopUpGame(props) {
       <p>Avis : { avis }</p>
       <ul>
        {rating}
+      </ul>
+
+      <p>Disponible sur : </p>
+      <ul>
+       {stores}
       </ul>
 
      </div>
