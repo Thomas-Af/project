@@ -14,9 +14,7 @@ const platformName = platform.map(item => {
    <img src={img} alt={name}/>
    {removeOrLike === 'like' 
    ? <div className='like' onClick={like}>&#9825;</div> 
-   : <div className='like' onClick={remove}>X</div>}
-   {/* <div className='like' onClick={like}>&#9825;</div>
-   <div className='like' onClick={remove}>X</div> */}
+   : <div className='like' onClick={remove}>&#x2716;</div>}
    <div className='cardInfo'>
     <ul className="genre">
     {genreName}
@@ -26,7 +24,7 @@ const platformName = platform.map(item => {
     <ul className="platform">
     {platformName}
     </ul>
-    <p className="rating"><span>{rate}</span> / 5</p>
+    <p className="rating"><span>{rate}</span> / 5 &#x2605;</p>
    </div>
   </div>
  )

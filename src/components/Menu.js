@@ -9,8 +9,6 @@ export default function Menu() {
  useEffect(() => {
   const s = localStorage.getItem('favs')
   let favoriteLocal = s === undefined ? [] : JSON.parse(s)
-
-  console.log('favoriteLocalMenu', favoriteLocal)
   
   if (favoriteLocal) {
      let count = favoriteLocal.length
@@ -22,10 +20,10 @@ export default function Menu() {
   <div className='menu'>
    <nav>
     <div>
-    <Link to="/">HomePage</Link>
-    <Link to="Favorite">Favorite <span>{count}</span></Link>
+    <Link to="/">Accueil</Link>
+    <Link to="Favorite">Favoris <span>{count}</span></Link>
     </div>
-    <Link to="Random">RandomGame</Link>
+    <Link to="Random">Random</Link>
    </nav>
   </div>
  )

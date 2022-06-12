@@ -5,7 +5,9 @@ export default function PopUpGame(props) {
  const { data, link } = props
 
  if (!data) {
-  return <div>Loading...</div>;
+  return <div id="loader" className="blockLoader">
+  <div className="loader"></div>
+ </div>;
  } if (data) {
   console.log('data game', data)
 
@@ -50,31 +52,36 @@ export default function PopUpGame(props) {
       </div>
      <img src={data.background_image} alt={data.name} className='img'/>
      <div className='content'>
-      { data.name }
+      <p className="title">{ data.name }</p>
       <ul className="genre">
        {genreName}
       </ul>
-      <ul>
-      {platformName}
-      </ul>
+      <div>
+        <p><span>Disponible sur : </span></p>
+        <ul>
+        {platformName}
+        </ul>
+      </div>
 
-      <p>Sorti le : { data.released}</p>
-      <p>Noté : { data.rating} / 5</p>
-      <p>Note ESRB : { data.esrb_rating.name}</p>
+      <p><span>Sorti le : </span>{ data.released}</p>
+      <p><span>Noté : </span>{ data.rating} / 5 &#x2605;</p>
+      <p><span>Note ESRB : </span>{ data.esrb_rating.name}</p>
 
-      <p>Avis : { avis }</p>
+      <p><span>Avis : </span>{ avis }</p>
       <ul>
        {rating}
       </ul>
 
-      <p>Disponible sur : </p>
-      <ul>
-       {stores}
-      </ul>
+      <div>
+        <p><span>Téléchargeable sur : </span></p>
+        <ul>
+        {stores}
+        </ul>
+      </div>
 
      </div>
      <div className='pictures'>
-     <p>Images du jeu : </p>
+     <p><span>Images du jeu : </span></p>
       <ul className='picture'>
        {pictures}
       </ul>
