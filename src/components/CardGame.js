@@ -1,5 +1,5 @@
 export default function CardGame(props) {
- const { name, genre, platform, rate, img, like } = props
+ const { name, genre, platform, rate, img, like, remove, removeOrLike } = props
 
 const genreName = genre.map(item => {
  return <li key={item.id}> {item.name} </li>
@@ -12,7 +12,11 @@ const platformName = platform.map(item => {
  return  (
   <div className='card'>
    <img src={img} alt={name}/>
-   <div className='like' onClick={like}>&#9825;</div>
+   {removeOrLike === 'like' 
+   ? <div className='like' onClick={like}>&#9825;</div> 
+   : <div className='like' onClick={remove}>X</div>}
+   {/* <div className='like' onClick={like}>&#9825;</div>
+   <div className='like' onClick={remove}>X</div> */}
    <div className='cardInfo'>
     <ul className="genre">
     {genreName}

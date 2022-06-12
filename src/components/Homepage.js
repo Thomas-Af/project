@@ -9,68 +9,71 @@ export function Homepage() {
  const [data, setData] = useState([]);
  const [favorite, setFavorite] = useState([]);
  const [genre, setGenre] = useState();
+//  let [removeOrLike, setRemoveOrLike] = useState('like');
 
 
 
  useEffect(() => {
   fetchData('games')
   .then(response => {
+   document.getElementById('loader').style.display = 'none';
    setData(response.results);
    console.log('setData', data)
   });
  }, []);
 
+ useEffect(() => {
+   const s = localStorage.getItem('favs')
+   let favoriteLocal = s === undefined ? [] : JSON.parse(s)
+   
+   if (favoriteLocal) {
+      setFavorite(favoriteLocal)
+   } 
+  }, []);
 
-   // console.log('Data Updated', data)
-   // console.log('favorite', favorite)
-   let favoriteElement = data;
-   // const favoriteElement = favorite.map(item => {
-   //    console.log('item', item)
-   //    return item.id
-   // })
-   console.log('favoriteElement', favoriteElement)
+
+
 
    function AddRemoveFavorite(data) {
-      // console.log(data.name)
-      console.log('data.id', data.id)
-      
+
       const newFavorite = {...data}
-      console.log('newFavorite', newFavorite)
+      const s = localStorage.getItem('favs')
 
-      if (favorite.length > 0) {
+      if (favorite.find(element => element.id === newFavorite.id)) {
          setFavorite(prevFavorite => {
-            console.log('IF favoriteElement', favoriteElement)
-            console.log('test data.id', data.id)
+            let newFavs = s === undefined ? [] : JSON.parse(s)
 
+            newFavs = prevFavorite.filter(item=>item.id !== newFavorite.id )
 
-            const fav = favoriteElement.includes(data.id) ? prevFavorite.filter(data=>data.id !== favoriteElement ) : [...prevFavorite, newFavorite];
+           localStorage.setItem('favs', JSON.stringify(newFavs))
 
-            console.log('fav', fav)
-            localStorage.setItem('Favorite', fav);
-            return fav
+           
+           return newFavs
          })
       } else {
-         console.log('else new favorite', newFavorite)
-         setFavorite(newFavorite)
+         setFavorite(prevFavorite => {
+            let newFavs = s === undefined ? [] : JSON.parse(s)
+            
+            newFavs = [...prevFavorite, newFavorite]
+            localStorage.setItem('favs', JSON.stringify(newFavs))
+            
+            return newFavs
+         })
       }
    }
    
-   console.log('favorite', favorite)
-
    const filteredGames = genre ? data.filter(games => games.genres.find(t => t.name === genre))
    : data;
 
    function filter(name) {
-      console.log(name)
       setGenre(prevGenre => (prevGenre === name ? null : name))
     }
-
-
  
  return (
   <>
-   <Filters data={data} filter={filter}/>
-   <GameList data={filteredGames} like={AddRemoveFavorite}/>
+  <div class="loader" id="loader"></div>
+  <Filters data={data} filter={filter} />
+   <GameList data={filteredGames} like={AddRemoveFavorite} remove={AddRemoveFavorite} removeOrLike={'like'}/>    
   </>
    )
 }

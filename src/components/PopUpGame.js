@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 export default function PopUpGame(props) {
  const { data, link } = props
 
- console.log('trucbidulechouette');
-
  if (!data) {
   return <div>Loading...</div>;
  } if (data) {
