@@ -9,7 +9,6 @@ export default function fetchData(endpoint) {
    return maReponse.json();
  })
  // .then(function (maDonnee) {
- //   console.log("maDonnee", maDonnee); 
 
  //   return maDonnee;
 

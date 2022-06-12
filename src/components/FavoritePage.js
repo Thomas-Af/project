@@ -11,7 +11,6 @@ export function FavoritePage() {
 
  function removeFavorite(object) {
 
-  console.log('object', object)
   const newFavorite = {...object}
   let s = localStorage.getItem('favs')
 

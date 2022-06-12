@@ -11,7 +11,6 @@ export function RandomPage() {
    fetchData('games')
   .then(response => {
    setData(response.results);
-   console.log('setData', data)
   })
  }, []);
 

@@ -9,7 +9,6 @@ export default function PopUpGame(props) {
   <div className="loader"></div>
  </div>;
  } if (data) {
-  console.log('data game', data)
 
   function closePopUp () {
    document.getElementById('popUpGame').style.display = 'none'
