@@ -42,6 +42,7 @@ export function Homepage() {
 
            localStorage.setItem('favs', JSON.stringify(newFavs))
 
+           alert(newFavorite.name + ' à été retiré des favoris');
            
            return newFavs
          })
@@ -52,6 +53,8 @@ export function Homepage() {
             newFavs = [...prevFavorite, newFavorite]
             localStorage.setItem('favs', JSON.stringify(newFavs))
             
+            alert(newFavorite.name + ' à été ajouté aux favoris');
+
             return newFavs
          })
       }
